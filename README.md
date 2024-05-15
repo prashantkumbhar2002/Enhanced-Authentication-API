@@ -54,7 +54,7 @@ Replace `MONGO_URI`,` JWT_SECRET`, and `GOOGLE_CLIENT_ID` with your MongoDB URI,
 # API Documentation
 After starting the server, you can access the API documentation at:
 ```bash
-  http://localhost:3000/api-docs
+  http://localhost:3000/docs
 ```
 
 This documentation is generated using Swagger and provides detailed information about the available endpoints and how to interact with them.
