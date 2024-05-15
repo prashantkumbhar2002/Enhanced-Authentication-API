@@ -107,6 +107,7 @@ At the initial step we don't have any user as admin.
 So, we can promote user as Admin by running following script: `seedAdminUser.js`
 
 **Usage:**
+
 From server root path:
 
 ```bash
