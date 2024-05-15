@@ -86,9 +86,23 @@ const updateAvatar = asyncHandler(async (req, res, next) => {
     }
 });
 
+const updateUserProfileVisibility = asyncHandler(async (req, res, next) => {
+    try {
+        const user = req.user; // Get current user from request
+      
+        // Toggle profile visibility (isPublic)
+        user.isPublic = !user.isPublic;
+        await user.save();
+      
+        res.status(200).json(new APIResponse(200, user, 'Profile visibility updated successfully'));
+    } catch (error) {
+        next(error)
+    }
+  });
 
 export {
     getCurrentUser,
     updateAccountDetails,
     updateAvatar,
+    updateUserProfileVisibility
 };
