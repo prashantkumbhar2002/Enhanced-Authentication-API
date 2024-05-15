@@ -33,12 +33,24 @@ This project is an authentication API built with Node.js using Express.js, Mongo
 
 4. **Set up environment variables**
 Create a `.env` file in the root directory with the following variables:
-  PORT=3000
-  MONGO_URI=mongodb://localhost:27017/authentication
-  JWT_SECRET=your_jwt_secret
-  GOOGLE_CLIENT_ID=your_google_client_id
+```bash
+   PORT=3000
+   MONGO_URI=mongodb://localhost:27017
+   DB_Name = AuthAPI
+   ACCESS_TOKEN_SECRET = backend-practice
+   ACCESS_TOKEN_EXPIRY = 1d
+   REFRESH_TOKEN_SECRET = backend-practice
+   REFRESH_TOKEN_EXPIRY = 10d
+   CLOUDINARY_CLOUD_NAME = name_of_cloudinary_cloud
+   CLOUDINARY_API_KEY = api_key
+   CLOUDINARY_API_SECRET = api_secret
+   GOOGLE_CLIENT_ID=your_google_client_id
+```
 
-Replace `MONGO_URI`,` JWT_SECRET`, and `GOOGLE_CLIENT_ID` with your MongoDB URI, JWT secret key, and Google OAuth client ID, respectively.
+Replace `MONGO_URI`,` CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, and `GOOGLE_CLIENT_ID` with your MongoDB URI, Cloudinary cloud name, Cloudinary api key, Cloudinary api secret, and Google OAuth client ID, respectively.
+
+For Cloudinary configuration see this: https://cloudinary.com/documentation/cloudinary_credentials_tutorial
+
 
 5. **Start the server**
 ### Development Mode
