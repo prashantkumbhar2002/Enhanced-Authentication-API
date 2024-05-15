@@ -1,5 +1,5 @@
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 const options = {
   definition: {
@@ -39,4 +39,4 @@ function swaggerDocs(app, port) {
     res.send(swaggerSpec);
   });
 }
-module.exports = swaggerDocs;
+export default swaggerDocs;

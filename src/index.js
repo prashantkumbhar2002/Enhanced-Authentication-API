@@ -1,7 +1,10 @@
-require('dotenv').config();
-const app = require('./app.js');
-const connectDB = require("./db/index.js");
-const swaggerSetup = require('./swagger.js');
+import dotenv from "dotenv";
+import app from './app.js'
+import connectDB from "./db/index.js";
+import swaggerSetup from './swagger.js';
+dotenv.config({
+    path: './env'
+})
 let PORT = process.env.PORT || 8001;
 connectDB()
 .then(() => {
