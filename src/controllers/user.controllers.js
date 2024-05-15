@@ -88,21 +88,46 @@ const updateAvatar = asyncHandler(async (req, res, next) => {
 
 const updateUserProfileVisibility = asyncHandler(async (req, res, next) => {
     try {
-        const user = req.user; // Get current user from request
+        const user = req.user;
       
         // Toggle profile visibility (isPublic)
         user.isPublic = !user.isPublic;
         await user.save();
       
-        res.status(200).json(new APIResponse(200, user, 'Profile visibility updated successfully'));
+        res.status(200).json(new APIResponse(200, {isPublic: user.isPublic}, 'Profile visibility updated successfully'));
     } catch (error) {
         next(error)
     }
   });
 
+const getUserProfile = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+
+    try {
+        const userProfile = await User.findById(userId);
+        if (!userProfile.isPublic && !req.user.isAdmin) {
+            throw new APIError(403, 'Unauthorized: Private profile access denied');
+        }
+        res.status(200).json(new APIResponse(200, userProfile, 'User profile retrieved successfully'));
+    } catch (error) {
+        next(error)
+    }
+});
+
+const getAllUserProfiles = asyncHandler(async (req, res, next) => {
+    try {
+        const allUserProfiles = await User.find();
+        res.status(200).json(new APIResponse(200, allUserProfiles, 'All user profiles retrieved successfully'));
+    } catch (error) {
+        next(error)
+    }
+});
+
 export {
     getCurrentUser,
     updateAccountDetails,
     updateAvatar,
-    updateUserProfileVisibility
+    updateUserProfileVisibility,
+    getUserProfile,
+    getAllUserProfiles
 };
